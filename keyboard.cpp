@@ -49,7 +49,7 @@ keyboard::keyboard(QWidget *parent)
     Google_PinyinInit();
 
     /*初始化键盘模式*/
-    set_keyboardmode(EN_ONLY);
+    set_keyboardmode(ANY);
 }
 
 /**
@@ -876,12 +876,10 @@ void keyboard::on_key_pinyininput_textChanged(const QString &arg1)
         ime_pinyin::im_get_candidate(i, buf, 255);
         if(ResultStr.size() <= i)
         {
-            qDebug() << "追加"<< i;
             ResultStr.append(QString::fromUtf16(buf));
         }
         else
         {
-            qDebug() << "替换"<< i;
             ResultStr.replace(i ,QString::fromUtf16(buf));
         }
     }
