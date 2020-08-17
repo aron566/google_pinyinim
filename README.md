@@ -5,9 +5,27 @@
 ### 加入头文件进入你的工程
 ## 链接方式
 1、clone工程到你的本地目录，打开项目
-2、修改项目中.pro文件中TEMPLATE = app改为lib即可生成动态库文件
-3、取出工程中所有.h文件及编译生成的库文件
-4、将.h文件加入到你需要用到的工程中，.pro文件中链接此动态库文件即可
+2、动态库的生成：修改项目中.pro文件中TEMPLATE = **app**改为**lib**即可生成动态库文件
+
+```bash
+# 生成库文件
+TARGET = virtualkeyboard
+TEMPLATE = lib
+```
+
+3、动态库的基础上静态库的生成：
+
+```bash
+# 生成库文件
+TARGET = virtualkeyboard
+TEMPLATE = lib
+# 生成静态库
+CONFIG += staticlib
+```
+
+4、取出工程中所有.h文件及编译生成的库文件
+5、将.h文件加入到你需要用到的工程中，.pro文件中链接此动态库文件即可
+
 ## 修改相关参数
 ### 修改输入法界面尺寸大小
 - 打开`virtualkeyboard.h`文件,文件中定义皆以**pixel**为单位
