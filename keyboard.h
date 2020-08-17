@@ -51,8 +51,16 @@ private:
     quint16 CurrentResultPageNUM = 1;
     quint16 TotalResultPageNUM = 1;
 public:
+    enum KEYBOARD_MODE
+    {
+        NUM_ONLY = 0,/**< 数字模式*/
+        EN_ONLY,/**< 英文模式*/
+        ANY,/**< 全功能*/
+    };
+    void showKeyboard(QString title = "键入xx的内容：" ,QString str = "2020");
     void set_editTips(QString title = "键入xx的内容：");
     void set_editBox(QString str = "2020");
+    void set_keyboardmode(KEYBOARD_MODE mode);
 private:
     void Google_PinyinInit();
     void ZhResultWigdetInit();
@@ -64,6 +72,8 @@ private:
     void ShowNextPageResult();
     void ShowLastPageResult();
     void SetResultHidden();
+    void SetEnableNUM(bool state);
+    void SetEnableEN(bool state);
 signals:
     void editisModifiedok(QString);
 private slots:

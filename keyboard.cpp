@@ -30,10 +30,15 @@ keyboard::keyboard(QWidget *parent)
     , ui(new Ui::keyboard)
 {
     ui->setupUi(this);
+
     /*去掉windows关闭窗口按钮*/
     this->setWindowFlag(Qt::FramelessWindowHint);
+
+    this->hide();
+
     /*聚焦排序*/
     InitTabOrder();
+
     /*映射按键对象*/
     Init_MAP_Key_value();
 
@@ -42,6 +47,9 @@ keyboard::keyboard(QWidget *parent)
 
     /*初始化谷歌拼音*/
     Google_PinyinInit();
+
+    /*初始化键盘模式*/
+    set_keyboardmode(EN_ONLY);
 }
 
 /**
@@ -192,6 +200,18 @@ void keyboard::SetResultHidden()
 }
 
 /**
+ * @brief keyboard::showKeyboard
+ * @param title
+ * @param str
+ */
+void keyboard::showKeyboard(QString title ,QString str)
+{
+    set_editTips(title);
+    set_editBox(str);
+    this->show();
+}
+
+/**
  * @brief keyboard::set_editTips
  * @param title
  */
@@ -207,6 +227,115 @@ void keyboard::set_editTips(QString title)
 void keyboard::set_editBox(QString str)
 {
    ui->keyboardeditbox->setText(str);
+}
+
+/**
+ * @brief keyboard::set_keyboardmode
+ * @param mode
+ */
+void keyboard::set_keyboardmode(KEYBOARD_MODE mode)
+{
+    switch(mode)
+    {
+        case ANY:
+            SetEnableNUM(true);
+            SetEnableEN(true);
+            break;
+        case NUM_ONLY:
+            SetEnableNUM(true);
+            SetEnableEN(false);
+            break;
+        case EN_ONLY:
+            SetEnableNUM(false);
+            SetEnableEN(true);
+            break;
+    }
+}
+
+/**
+ * @brief keyboard::SetEnableNUM
+ * @param state
+ */
+void keyboard::SetEnableNUM(bool state)
+{
+    ui->key_0->setEnabled(state);
+    ui->key_1->setEnabled(state);
+    ui->key_2->setEnabled(state);
+    ui->key_3->setEnabled(state);
+    ui->key_4->setEnabled(state);
+    ui->key_5->setEnabled(state);
+    ui->key_6->setEnabled(state);
+    ui->key_7->setEnabled(state);
+    ui->key_8->setEnabled(state);
+    ui->key_9->setEnabled(state);
+    if(state)
+    {
+        ui->key_0->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_1->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_2->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_3->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_4->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_5->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_6->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_7->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_8->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_9->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+    }
+    else
+    {
+        ui->key_0->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_1->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_3->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_4->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_5->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_6->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_7->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_8->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+        ui->key_9->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                   "background-color: rgb(64, 65, 66);"));
+    }
+}
+
+/**
+ * @brief keyboard::SetEnableNUM
+ * @param state
+ */
+void keyboard::SetEnableEN(bool state)
+{
+    for(int i = 'a';i <= 'z';i++)
+    {
+         keyboardmap[i]->setEnabled(state);
+         if(state)
+         {
+             keyboardmap[i]->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+                                                        "background-color: rgb(64, 65, 66);"));
+         }
+         else
+         {
+             keyboardmap[i]->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);\n"
+                                                        "background-color: rgb(64, 65, 66);"));
+         }
+    }
 }
 
 /**
@@ -731,7 +860,8 @@ void keyboard::on_key_del_clicked()
 void keyboard::on_key_pinyininput_textChanged(const QString &arg1)
 {
     ime_pinyin::char16 buf[256] = {0};
-
+    /*重置至第一页结果*/
+    CurrentResultPageNUM = 1;
     ResultStr.clear();
     /*获得本次搜索到数目*/
     size_t ResultCnt = ime_pinyin::im_search(arg1.toUtf8().data(), static_cast<size_t>(arg1.size()));
@@ -739,7 +869,7 @@ void keyboard::on_key_pinyininput_textChanged(const QString &arg1)
     /*保存搜索结果*/
     for(size_t i = 0; i < ResultCnt; ++i)
     {
-        if(i >= 100)
+        if(i >= SEARCH_RESULT_NUM_MAX)
         {
             break;
         }
@@ -757,7 +887,6 @@ void keyboard::on_key_pinyininput_textChanged(const QString &arg1)
     }
     /*统计页数*/
     TotalResultPageNUM = ResultStr.size()>1?(ResultStr.size()-1)/(CHINESESEARCH_BLOCKSTYLE_RECT_H_NUM_MAX*CHINESESEARCH_BLOCKSTYLE_RECT_V_NUM_MAX)+1:1;
-    qDebug() << "搜索结果数目："<< ResultStr.size() << "共" << TotalResultPageNUM << "页";
 
     /*更新一次搜索结果显示*/
     ShowSearchResult(ResultStr);
@@ -866,7 +995,6 @@ void keyboard::on_LASTpushButton_clicked()
  */
 void keyboard::slotResult(customerqpushbutton *pbtn)
 {
-    qDebug() << "结果已选择";
     /*搜索结果选中,发送到输入端*/
     QString str = pbtn->text();
     AppendOnKeyInputWindow(str ,true);
