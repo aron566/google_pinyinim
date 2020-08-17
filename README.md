@@ -67,9 +67,9 @@ HEADERS += \
     $$PWD/virtualkeyboard.h
 ```
 
-5.3、复制`customerqpushbutton.h` `keyboard.h` `virtualkeyboard.h`到**`keyboard`**文件夹
+5.3、复制`customerqpushbutton.h` `keyboard.h` `virtualkeyboard.h`到`keyboard`文件夹
 
-5.4、复制编译的动态库文件或者静态库文件到**`keyboard`**文件夹
+5.4、复制编译的动态库文件或者静态库文件到`keyboard`文件夹
 
 5.5、在**keyboard**文件夹中新建**lib**文件夹
 
