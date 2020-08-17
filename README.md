@@ -26,13 +26,19 @@ CONFIG += staticlib
 4、取出工程中所有.h文件及编译生成的库文件
 5、将.h文件加入到**你需要用到的工程中**，.pro文件中链接此动态库文件即可
 
+项目中`.pro`文件增加的内容如下：
+
 ```bash
 # 软键盘
 include(keyboard/keyboard.pri)
+
+# 软键盘linux
 unix:!macx: LIBS += -L$$PWD/keyboard/
 unix:!macx: LIBS += -lvirtualkeyboard
-unix:!macx: INCLUDEPATH += $$PWD/keyboard
-unix:!macx: DEPENDPATH += $$PWD/keyboard
+
+# 软键盘windows
+win32: LIBS += -L$$PWD/keyboard/
+win32: LIBS += -lvirtualkeyboard
 ```
 
 5.1、在你的工程中新建keyboard文件夹

@@ -17,8 +17,8 @@
 /** Private includes ---------------------------------------------------------*/
 
 /** Private defines ----------------------------------------------------------*/
-#define UI_KEYBOARDWINDOW_WIDTH     600U
-#define UI_KEYBOARDWINDOW_HEIGHT    400U
+#define UI_KEYBOARDWINDOW_WIDTH     1280U
+#define UI_KEYBOARDWINDOW_HEIGHT    720U
 
 #define SEARCH_RESULT_NUM_MAX       200U/**< 最大候选数目*/
 /*中文结果起始高度，可大不可小*/

@@ -6,7 +6,9 @@ CONFIG += c++11
 
 # 生成库文件
 TARGET = virtualkeyboard
-TEMPLATE = app
+TEMPLATE = lib
+# 生成静态库
+CONFIG += staticlib
 
 # 谷歌拼音库的依赖
 #DEFINES += PINYINIME_LIBRARY
