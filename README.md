@@ -197,6 +197,16 @@ void MainWindow::slotKeyboardReturn(QString str)
 
 4、主线程子级页面，输入控件被点击处理
 
+QLineEdit控件有以下几个信号：
+
+```cpp
+// returnPressed：聚焦在控件上按下回车键时发出，通常用作不带触摸屏的环境
+// selectionChanged：聚焦到时发出一次信号
+// 连接信号：
+connect(ui->clientiplineEdit ,&QLineEdit::selectionChanged ,this ,&parameter::on_clientip_Pressed);
+connect(ui->clientiplineEdit ,&QLineEdit::returnPressed ,this ,&parameter::on_clientip_Pressed);
+```
+
 ```cpp
 signals:
     void show_keyboard(QWidget * ,QLineEdit *,QString,QString);
