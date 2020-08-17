@@ -7,8 +7,8 @@ CONFIG += c++11
 # 生成库文件
 TARGET = virtualkeyboard
 TEMPLATE = lib
-# 生成静态库
-CONFIG += staticlib
+# 只生成静态库
+#CONFIG += staticlib
 
 # 谷歌拼音库的依赖
 #DEFINES += PINYINIME_LIBRARY
@@ -27,8 +27,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     customerqpushbutton.cpp \
-    main.cpp \
     keyboard.cpp
+#    main.cpp \单键盘页面测试使用，编译库时不可带入
 
 HEADERS += \
     customerqpushbutton.h \

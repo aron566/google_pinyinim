@@ -56,9 +56,6 @@
 
 /** Exported macros-----------------------------------------------------------*/
 
-#define GOOGLEPINGYIN_DATAFILE_PATH "G:/C_file/QT/MyVirtualKeyboard/data/dict_pinyin.dat"
-#define USERPINGYIN_DATAFILE_PATH "G:/C_file/QT/MyVirtualKeyboard/data/user_dict_pinyin"
-
 /** Exported variables -------------------------------------------------------*/
 /** Exported functions prototypes --------------------------------------------*/
 

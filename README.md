@@ -13,13 +13,13 @@ TARGET = virtualkeyboard
 TEMPLATE = lib
 ```
 
-3、动态库的基础上静态库的生成：
+3、静态库的生成（不会更新之前已生成的动态库文件！）：
 
 ```bash
 # 生成库文件
 TARGET = virtualkeyboard
 TEMPLATE = lib
-# 生成静态库
+# 指定生成为静态库
 CONFIG += staticlib
 ```
 
@@ -105,7 +105,7 @@ HEADERS += \
   1、实例化键盘
   
   ```cpp
-  keyboard *pKeyboard = new keyboard;
+  keyboard *pKeyboard = new keyboard(this ,"谷歌词典文件路径" ,"用户词典文件路径");
   ```
   
   2、连接键盘输入结束信号
@@ -205,6 +205,7 @@ QLineEdit控件有以下几个信号：
 // 连接信号：
 connect(ui->clientiplineEdit ,&QLineEdit::selectionChanged ,this ,&parameter::on_clientip_Pressed);
 connect(ui->clientiplineEdit ,&QLineEdit::returnPressed ,this ,&parameter::on_clientip_Pressed);
+/*需要注意的是，当控件代码由UI设计器自动生成时，信号与槽的建立应当在UI设计器中完成*/
 ```
 
 ```cpp

@@ -37,7 +37,7 @@ class keyboard : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit keyboard(QWidget *parent = nullptr);
+    explicit keyboard(QWidget *parent = nullptr ,const char* datapath = nullptr ,const char* userdatapt = nullptr);
     ~keyboard();
     void InitTabOrder(void);
     void Init_MAP_Key_value(void);
@@ -47,6 +47,8 @@ public:
     bool keycapsmode = false;
     bool IsZhMode = false;
 private:
+    const char *dict_datapath = nullptr;
+    const char *dict_userdatapath = nullptr;
     QStringList ResultStr;
     quint16 CurrentResultPageNUM = 1;
     quint16 TotalResultPageNUM = 1;
@@ -62,7 +64,7 @@ public:
     void set_editBox(QString str = "2020");
     void set_keyboardmode(KEYBOARD_MODE mode);
 private:
-    void Google_PinyinInit();
+    void Google_PinyinInit(const char* datapath = nullptr ,const char* userdatapt = nullptr);
     void ZhResultWigdetInit();
     void set_capsLockmode(bool enable);
     void UpdateSymbolDisplay();

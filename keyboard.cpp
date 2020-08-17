@@ -25,8 +25,10 @@
  * @brief keyboard::keyboard
  * @param parent
  */
-keyboard::keyboard(QWidget *parent)
+keyboard::keyboard(QWidget *parent ,const char* datapath ,const char* userdatapth)
     : QMainWindow(parent)
+    , dict_datapath(datapath)
+    , dict_userdatapath(userdatapth)
     , ui(new Ui::keyboard)
 {
     ui->setupUi(this);
@@ -46,7 +48,7 @@ keyboard::keyboard(QWidget *parent)
     ZhResultWigdetInit();
 
     /*初始化谷歌拼音*/
-    Google_PinyinInit();
+    Google_PinyinInit(dict_datapath ,dict_userdatapath);
 
     /*初始化键盘模式*/
     set_keyboardmode(ANY);
@@ -140,13 +142,13 @@ void keyboard::Init_MAP_Key_value(void)
 /**
  * @brief keyboard::Google_PinyinInit
  */
-void keyboard::Google_PinyinInit()
+void keyboard::Google_PinyinInit(const char* datapath ,const char* userdatapt)
 {
-    QFileInfo info(GOOGLEPINGYIN_DATAFILE_PATH);
+    QFileInfo info(datapath);
     qDebug() << info.size();
 
-    if (!ime_pinyin::im_open_decoder(GOOGLEPINGYIN_DATAFILE_PATH,
-                                     USERPINGYIN_DATAFILE_PATH))
+    if (!ime_pinyin::im_open_decoder(datapath,
+                                     userdatapt))
     {
         qDebug("%s[%d] open pinyin dictionary failed", __func__, __LINE__);
         return;
@@ -441,6 +443,9 @@ void keyboard::on_key_ok_clicked()
     /*清除结果缓冲区*/
     ResultStr.clear();
     IsZhMode = keycapsmode = false;
+    /*更新为隐藏态*/
+    SetResultHidden();
+    UpdateSymbolDisplay();
     this->hide();
     emit editisModifiedok(ui->keyboardeditbox->text());
 }
