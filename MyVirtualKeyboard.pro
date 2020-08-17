@@ -33,8 +33,8 @@ HEADERS += \
     keyboard.h \
     virtualkeyboard.h
 
-FORMS += \
-    keyboard.ui
+#FORMS += \
+#    keyboard.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

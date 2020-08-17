@@ -24,7 +24,62 @@ CONFIG += staticlib
 ```
 
 4、取出工程中所有.h文件及编译生成的库文件
-5、将.h文件加入到你需要用到的工程中，.pro文件中链接此动态库文件即可
+5、将.h文件加入到**你需要用到的工程中**，.pro文件中链接此动态库文件即可
+
+```bash
+# 软键盘
+include(keyboard/keyboard.pri)
+unix:!macx: LIBS += -L$$PWD/keyboard/
+unix:!macx: LIBS += -lvirtualkeyboard
+unix:!macx: INCLUDEPATH += $$PWD/keyboard
+unix:!macx: DEPENDPATH += $$PWD/keyboard
+```
+
+5.1、在你的工程中新建keyboard文件夹
+
+5.2、在keyboard文件夹中新建keyboard.pri文件
+
+填入如下内容：
+
+```bash
+HEADERS += \
+    $$PWD/customerqpushbutton.h \
+    $$PWD/keyboard.h \
+    $$PWD/lib/atomdictbase.h \
+    $$PWD/lib/dictbuilder.h \
+    $$PWD/lib/dictdef.h \
+    $$PWD/lib/dictlist.h \
+    $$PWD/lib/dicttrie.h \
+    $$PWD/lib/lpicache.h \
+    $$PWD/lib/matrixsearch.h \
+    $$PWD/lib/mystdlib.h \
+    $$PWD/lib/ngram.h \
+    $$PWD/lib/pinyinime.h \
+    $$PWD/lib/pinyinime_global.h \
+    $$PWD/lib/searchutility.h \
+    $$PWD/lib/spellingtable.h \
+    $$PWD/lib/spellingtrie.h \
+    $$PWD/lib/splparser.h \
+    $$PWD/lib/sync.h \
+    $$PWD/lib/userdict.h \
+    $$PWD/lib/utf16char.h \
+    $$PWD/lib/utf16reader.h \
+    $$PWD/virtualkeyboard.h
+```
+
+5.3、复制`customerqpushbutton.h` `keyboard.h` `virtualkeyboard.h`到**`keyboard`**文件夹
+
+5.4、复制编译的动态库文件或者静态库文件到**`keyboard`**文件夹
+
+5.5、在**keyboard**文件夹中新建**lib**文件夹
+
+将克隆的工程中`googlelib`文件夹中所有.h后缀的文件复制到此
+
+5.6、修改`keyboard.h` 中`#include <pinyinime.h>`改为 `#include <keyboard/lib/pinyinime.h>`
+
+6、点击小锤子编译即可
+
+7、如果动态库则上传动态库文件到特定硬件上
 
 ## 修改相关参数
 ### 修改输入法界面尺寸大小
