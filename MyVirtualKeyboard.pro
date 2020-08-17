@@ -33,8 +33,9 @@ SOURCES += \
 HEADERS += \
     customerqpushbutton.h \
     keyboard.h \
-    virtualkeyboard.h
-
+    virtualkeyboard.h \
+    ui_keyboard.h
+# 屏蔽，否则打开项目会覆盖相对位置信息
 #FORMS += \
 #    keyboard.ui
 

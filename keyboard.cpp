@@ -440,6 +440,7 @@ void keyboard::on_key_ok_clicked()
     ime_pinyin::im_flush_cache();
     /*清除结果缓冲区*/
     ResultStr.clear();
+    IsZhMode = keycapsmode = false;
     this->hide();
     emit editisModifiedok(ui->keyboardeditbox->text());
 }

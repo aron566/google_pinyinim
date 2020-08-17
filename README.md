@@ -98,6 +98,8 @@ HEADERS += \
 
   # 使用方式
 
+  输入框使用单一`QLineEdit`控件便于管理
+  
   ## 初始化部分
   
   1、实例化键盘
@@ -109,13 +111,13 @@ HEADERS += \
   2、连接键盘输入结束信号
   
   ```cpp
-  connect(pKeyboard ,&keyboard::editisModifiedok ,this ,slotKeyboardReturn);
+  connect(pKeyboard ,&keyboard::editisModifiedok ,this ,&MainWindow::slotKeyboardReturn);
   ```
   
   6、槽函数处理，参数str为输入的内容
   
   ```cpp
-  void slotKeyboardReturn(QString &str)
+  void MainWindow::slotKeyboardReturn(QString &str)
   {
       /*do something...*/
   }
@@ -164,7 +166,12 @@ private:
 2、主线程建立槽，调用键盘显示
 
 ```cpp
-void slotprocessedit(QWidget *,QLineEdit *,QString title ,QString edittext)
+/*连接子界面要求显示键盘的信号*/
+connect(parameterui ,&parameter::show_keyboard ,this ,&MainWindow::slotprocessedit);
+```
+
+```cpp
+void MainWindow::slotprocessedit(QWidget *pObject ,QLineEdit *pwidget ,QString title ,QString edittext)
 {
     pLastCallobj = pObject;
     pLastCallwidget = pwidget;
@@ -175,11 +182,11 @@ void slotprocessedit(QWidget *,QLineEdit *,QString title ,QString edittext)
 3、主线程，连接键盘输入完成信号
 
 ```cpp
-connect(pKeyboard ,&keyboard::editisModifiedok ,this ,slotKeyboardReturn);
+connect(pKeyboard ,&keyboard::editisModifiedok ,this ,&MainWindow::slotKeyboardReturn);
 ```
 
 ```cpp
-void slotKeyboardReturn(QString &str)
+void MainWindow::slotKeyboardReturn(QString str)
 {
     /*重新显示子级页面*/
     pLastCallobj->show();
@@ -187,8 +194,6 @@ void slotKeyboardReturn(QString &str)
     pLastCallwidget->setText(str);
 }
 ```
-
-
 
 4、主线程子级页面，输入控件被点击处理
 
@@ -201,7 +206,7 @@ signals:
 /*在parameter界面，clientip输入框被点击*/
 void parameter::on_clientip_Pressed()
 {
-    emit show_keyboard(this ,this->ui->clientip,"输入客户端IP",this->ui->clientip->text());
+    emit show_keyboard(this ,ui->clientip,"输入客户端IP" ,ui->clientip->text());
     this->hide();
 }
 ```
