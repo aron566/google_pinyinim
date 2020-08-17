@@ -436,9 +436,13 @@ public:
         NEXTpushButton = new QPushButton(centralwidget);
         NEXTpushButton->setObjectName(QString::fromUtf8("NEXTpushButton"));
         NEXTpushButton->setGeometry(QRect(UI_KEYBOARDWINDOW_WIDTH*1190/1280, UI_KEYBOARDWINDOW_HEIGHT*160/720, UI_KEYBOARDWINDOW_WIDTH*80/1280, UI_KEYBOARDWINDOW_HEIGHT*80/720));
+        NEXTpushButton->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgb(64, 65, 66);"));
         LASTpushButton = new QPushButton(centralwidget);
         LASTpushButton->setObjectName(QString::fromUtf8("LASTpushButton"));
         LASTpushButton->setGeometry(QRect(UI_KEYBOARDWINDOW_WIDTH*1190/1280, UI_KEYBOARDWINDOW_HEIGHT*240/720, UI_KEYBOARDWINDOW_WIDTH*80/1280, UI_KEYBOARDWINDOW_HEIGHT*80/720));
+        LASTpushButton->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgb(64, 65, 66);"));
         keyboard->setCentralWidget(centralwidget);
 
         retranslateUi(keyboard);

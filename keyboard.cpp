@@ -944,6 +944,10 @@ void keyboard::ShowNextPageResult()
             ui->LASTpushButton->setHidden(true);
         }
     }
+    else
+    {
+        ui->NEXTpushButton->setHidden(true);
+    }
     ui->NEXTpushButton->setText(QString("=>%1").arg(CurrentResultPageNUM));
     ui->LASTpushButton->setText(QString("%1<=").arg(CurrentResultPageNUM));
 }
@@ -968,6 +972,11 @@ void keyboard::ShowLastPageResult()
         {
             ui->NEXTpushButton->setHidden(true);
         }
+    }
+    else
+    {
+        /*翻页到头隐藏上翻键*/
+        ui->LASTpushButton->setHidden(true);
     }
     ui->NEXTpushButton->setText(QString("=>%1").arg(CurrentResultPageNUM));
     ui->LASTpushButton->setText(QString("%1<=").arg(CurrentResultPageNUM));
