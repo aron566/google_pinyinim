@@ -83,6 +83,8 @@ HEADERS += \
 
 5.6、修改`keyboard.h` 中`#include <pinyinime.h>`改为 `#include <keyboard/lib/pinyinime.h>`
 
+5.7、复制`data`目录下的词典文件到**keyboard**文件夹内，（在其他目标板上运行，需将词典复制过去，实例化时指定加载路径信息）
+
 6、点击小锤子编译即可
 
 7、如果动态库则上传动态库文件到特定硬件上
