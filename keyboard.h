@@ -1,3 +1,4 @@
+void on_key_clear_clicked();
 /**
  *  @file keyboard.h
  *
@@ -177,6 +178,8 @@ private slots:
     void on_NEXTpushButton_clicked();
 
     void on_LASTpushButton_clicked();
+
+    void on_key_clear_clicked();
 
     void slotResult(customerqpushbutton *pbtn);
 

@@ -28,7 +28,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     customerqpushbutton.cpp \
     keyboard.cpp
-#    main.cpp \单键盘页面测试使用，编译库时不可带入
+#    main.cpp #\单键盘页面测试使用，编译库时不可带入
 
 HEADERS += \
     customerqpushbutton.h \

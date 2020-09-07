@@ -812,7 +812,7 @@ background-color: rgb(64, 65, 66);</string>
      <rect>
       <x>210</x>
       <y>640</y>
-      <width>641</width>
+      <width>591</width>
       <height>71</height>
      </rect>
     </property>
@@ -827,9 +827,9 @@ background-color: rgb(64, 65, 66);</string>
    <widget class="QPushButton" name="key_del">
     <property name="geometry">
      <rect>
-      <x>860</x>
+      <x>910</x>
       <y>640</y>
-      <width>141</width>
+      <width>91</width>
       <height>71</height>
      </rect>
     </property>
@@ -882,6 +882,23 @@ background-color: rgb(64, 65, 66);</string>
     </property>
     <property name="text">
      <string>&lt;=</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_clear">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>640</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(64, 65, 66);</string>
+    </property>
+    <property name="text">
+     <string>clear</string>
     </property>
    </widget>
   </widget>

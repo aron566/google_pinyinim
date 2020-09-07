@@ -403,6 +403,7 @@ void keyboard::UpdateSymbolDisplay()
         ui->key_point->setText(".");
         ui->key_comma->setText(",");
         ui->key_colon->setText(":");
+        ui->key_virgule->setText("_");
         ui->key_language->setText("en/zh");
         ui->key_caps->setText("CAPS");
     }
@@ -418,6 +419,7 @@ void keyboard::UpdateSymbolDisplay()
             ui->key_point->setText("。");
             ui->key_comma->setText("，");
             ui->key_colon->setText("：");
+            ui->key_virgule->setText("-");
         }
         else
         {
@@ -428,6 +430,7 @@ void keyboard::UpdateSymbolDisplay()
             ui->key_point->setText(".");
             ui->key_comma->setText(",");
             ui->key_colon->setText(":");
+            ui->key_virgule->setText("_");
             ui->NEXTpushButton->setHidden(true);
             ui->LASTpushButton->setHidden(true);
         }
@@ -1001,6 +1004,14 @@ void keyboard::on_NEXTpushButton_clicked()
 void keyboard::on_LASTpushButton_clicked()
 {
     ShowLastPageResult();
+}
+
+/**
+ * @brief keyboard::on_key_clear_clicked
+ */
+void keyboard::on_key_clear_clicked()
+{
+    ui->keyboardeditbox->setText("");
 }
 
 /**
