@@ -403,7 +403,8 @@ void keyboard::UpdateSymbolDisplay()
         ui->key_point->setText(".");
         ui->key_comma->setText(",");
         ui->key_colon->setText(":");
-        ui->key_virgule->setText("_");
+        ui->key_virgule->setText("/");
+        ui->key_dash->setText("_");
         ui->key_language->setText("en/zh");
         ui->key_caps->setText("CAPS");
     }
@@ -419,7 +420,8 @@ void keyboard::UpdateSymbolDisplay()
             ui->key_point->setText("。");
             ui->key_comma->setText("，");
             ui->key_colon->setText("：");
-            ui->key_virgule->setText("-");
+            ui->key_virgule->setText("\\");
+            ui->key_dash->setText("-");
         }
         else
         {
@@ -430,7 +432,8 @@ void keyboard::UpdateSymbolDisplay()
             ui->key_point->setText(".");
             ui->key_comma->setText(",");
             ui->key_colon->setText(":");
-            ui->key_virgule->setText("_");
+            ui->key_virgule->setText("/");
+            ui->key_dash->setText("_");
             ui->NEXTpushButton->setHidden(true);
             ui->LASTpushButton->setHidden(true);
         }
