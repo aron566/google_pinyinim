@@ -21,7 +21,11 @@ void on_key_clear_clicked();
 /** Private includes ---------------------------------------------------------*/
 
 /** Private defines ----------------------------------------------------------*/
-
+#if defined(VIRTUALKEYBOARD_LIBRARY)
+#  define VIRTUALKEYBOARD_EXPORT Q_DECL_EXPORT
+#else
+#  define VIRTUALKEYBOARD_EXPORT Q_DECL_IMPORT
+#endif
 /** Exported typedefines -----------------------------------------------------*/
 
 /** Exported constants -------------------------------------------------------*/
@@ -34,7 +38,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class keyboard; }
 QT_END_NAMESPACE
 
-class keyboard : public QMainWindow
+class VIRTUALKEYBOARD_EXPORT keyboard : public QMainWindow
 {
     Q_OBJECT
 public:

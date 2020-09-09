@@ -9,6 +9,8 @@ TARGET = virtualkeyboard
 TEMPLATE = lib
 # 只生成静态库
 #CONFIG += staticlib
+# 导出到dll
+DEFINES += VIRTUALKEYBOARD_LIBRARY
 
 # 谷歌拼音库的依赖
 #DEFINES += PINYINIME_LIBRARY
