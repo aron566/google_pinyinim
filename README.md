@@ -1,5 +1,23 @@
 # google_pinyinim
+
+![forks](https://img.shields.io/github/forks/aron566/google_pinyinim)
+![stars](https://img.shields.io/github/stars/aron566/google_pinyinim)
+[![license](https://img.shields.io/github/license/aron566/google_pinyinim)](https://github.com/aron566/google_pinyinim/blob/master/LICENSE)
+![](https://img.shields.io/badge/platform-Linux|Windows|Mac|Embedded-orange.svg)
+
+```
+                             _                       _                _         _            
+                            | |                     (_)              (_)       (_)           
+  __ _   ___    ___    __ _ | |  ___          _ __   _  _ __   _   _  _  _ __   _  _ __ ___  
+ / _` | / _ \  / _ \  / _` || | / _ \        | '_ \ | || '_ \ | | | || || '_ \ | || '_ ` _ \ 
+| (_| || (_) || (_) || (_| || ||  __/        | |_) || || | | || |_| || || | | || || | | | | |
+ \__, | \___/  \___/  \__, ||_| \___|        | .__/ |_||_| |_| \__, ||_||_| |_||_||_| |_| |_|
+  __/ |                __/ |          ______ | |                __/ |                        
+ |___/                |___/          |______||_|               |___/                         
+```
+
 谷歌拼音输入法移植至QT
+
 # 移植方法
 ## 第一种直接带入源码编译
 ### 这个无需多讲，直接将所有的工程包含到你所需的工程中去即可，可查看.pro文件涉及哪些文件。
