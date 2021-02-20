@@ -137,7 +137,7 @@ HEADERS += \
   6、槽函数处理，参数str为输入的内容
   
   ```cpp
-  void MainWindow::slotKeyboardReturn(QString &str)
+  void MainWindow::slotKeyboardReturn(QString str)
   {
       /*do something...*/
   }
@@ -187,22 +187,22 @@ private:
 
 ```cpp
 /*连接子界面要求显示键盘的信号*/
-connect(parameterui ,&parameter::show_keyboard ,this ,&MainWindow::slotprocessedit);
+connect(parameterui, &parameter::show_keyboard, this, &MainWindow::slotprocessedit);
 ```
 
 ```cpp
-void MainWindow::slotprocessedit(QWidget *pObject ,QLineEdit *pwidget ,QString title ,QString edittext)
+void MainWindow::slotprocessedit(QWidget *pObject, QLineEdit *pwidget, QString title, QString edittext)
 {
     pLastCallobj = pObject;
     pLastCallwidget = pwidget;
-	pKeyboard->showKeyboard(title ,edittext);
+	pKeyboard->showKeyboard(title, edittext);
 }
 ```
 
 3、主线程，连接键盘输入完成信号
 
 ```cpp
-connect(pKeyboard ,&keyboard::editisModifiedok ,this ,&MainWindow::slotKeyboardReturn);
+connect(pKeyboard, &keyboard::editisModifiedok, this, &MainWindow::slotKeyboardReturn);
 ```
 
 ```cpp
@@ -223,14 +223,14 @@ QLineEdit控件有以下几个信号：
 // returnPressed：聚焦在控件上按下回车键时发出，通常用作不带触摸屏的环境
 // selectionChanged：聚焦到时发出一次信号
 // 连接信号：
-connect(ui->clientiplineEdit ,&QLineEdit::selectionChanged ,this ,&parameter::on_clientip_Pressed);
-connect(ui->clientiplineEdit ,&QLineEdit::returnPressed ,this ,&parameter::on_clientip_Pressed);
+connect(ui->clientiplineEdit, &QLineEdit::selectionChanged, this, &parameter::on_clientip_Pressed);
+connect(ui->clientiplineEdit, &QLineEdit::returnPressed, this, &parameter::on_clientip_Pressed);
 /*需要注意的是，当控件代码由UI设计器自动生成时，信号与槽的建立应当在UI设计器中完成*/
 ```
 
 ```cpp
 signals:
-    void show_keyboard(QWidget * ,QLineEdit *,QString,QString);
+    void show_keyboard(QWidget *, QLineEdit *, QString, QString);
 ```
 
 ```cpp
