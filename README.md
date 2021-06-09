@@ -19,6 +19,7 @@
 谷歌拼音输入法移植至QT
 
 # 移植方法
+
 ## 第一种直接带入源码编译
 ### 这个无需多讲，直接将所有的工程包含到你所需的工程中去即可，可查看.pro文件涉及哪些文件。
 ## 第二种链接方式
@@ -44,7 +45,7 @@ CONFIG += staticlib
 4、取出工程中所有.h文件及编译生成的库文件
 5、将.h文件加入到**你需要用到的工程中**，.pro文件中链接此动态库文件即可
 
-项目中`.pro`文件增加的内容如下：
+项目中`.pro`文件增加的内容如下（或者右键添加库->选择外部->选择对应库文件）：
 
 ```bash
 # 软键盘
@@ -58,6 +59,13 @@ unix:!macx: LIBS += -lvirtualkeyboard
 win32: LIBS += -L$$PWD/keyboard/
 win32: LIBS += -lvirtualkeyboard
 ```
+
+```bash
+# 链接静态库时，多添加一行定义，否者在.h的头文件中声明了导入（Q_DECL_IMPORT），则在windows平台编译会找动态库，此时找不到会报未定义的错误
+DEFINES += VIRTUALKEYBOARD_LIBRARY
+```
+
+
 
 5.1、在你的工程中新建keyboard文件夹
 
