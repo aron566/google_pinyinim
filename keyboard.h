@@ -1,4 +1,3 @@
-void on_key_clear_clicked();
 /**
  *  @file keyboard.h
  *
@@ -85,13 +84,15 @@ signals:
     void editisModifiedok(QString);
 private slots:
 
+	void on_key_clear_clicked();
+	
     void on_key_caps_clicked();
-
-    void on_key_1_clicked();
 
     void on_key_del_clicked();
 
     void on_key_ok_clicked();
+	
+    void on_key_1_clicked();
 
     void on_key_2_clicked();
 
